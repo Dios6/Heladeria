@@ -1,0 +1,22 @@
+#imagenesSubidas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilo para cada imagen dentro del contenedor */
+#imagenesSubidas img {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    border-radius: 8px; /* Añade bordes redondeados a las imágenes */
+    box-shadow: 0 4px 8px rgb(0, 0, 0); /* Sombra suave */
+}
+
+h3{
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+

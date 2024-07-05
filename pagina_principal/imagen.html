@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estiloformulario.css">
+    <link rel="stylesheet" href="css/imagenes.css">
+    <title>Formulario de Heladería</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Inicio</a></li>
+            <li><a href="listardatos.html">Listar Datos</a></li>
+            <li><a href="imagen.html">Sube una foto de tu helado</a></li>
+        </ul>
+    </nav>
+
+    <h2>Sube una foto de tu Helado!</h2>
+    <form id="uploadForm" action="/subir_imagenes" method="post" enctype="multipart/form-data">
+        <label for="nombre">Nombre de la foto:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="descripcion">Descripción de la foto:</label>
+        <input type="text" id="descripcion" name="descripcion" required><br><br>
+
+        <label for="imagen">Seleccione la foto:</label>
+        <input type="file" id="imagen" name="imagen" required><br><br>
+
+        <input type="submit" value="Subir Foto">
+    </form>
+
+    <h2>Imágenes Subidas</h2>
+    <div id="imagenesSubidas">
+    </div>
+
+
+    <script>
+        window.onload = function () {
+            fetch('/imagenes')
+            .then(response => response.json())
+            .then(data => {
+                const imagenesDiv = document.getElementById('imagenesSubidas');
+                data.forEach(imagen => {
+                    const imgDiv = document.createElement('div');
+                    imgDiv.innerHTML = 
+                        '<h3>' + imagen.nombre + '</h3>' +
+                        '<p>' + imagen.descripcion + '</p>' +
+                        '<img src="/imagenes/' + imagen.imagen + '" alt="' + imagen.nombre + '" width="200">';
+                    imagenesDiv.appendChild(imgDiv);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
