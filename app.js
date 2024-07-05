@@ -83,8 +83,7 @@ app.post('/registrar_usuario', (req, res) => {
             res.send('Error al registrar el usuario');
         } else {
             console.log('Usuario registrado exitosamente:', result);
-            res.send('Usuario registrado exitosamente');
-            res.redirect('/');
+            res.redirect('/index.html');
         }
     });
 });
